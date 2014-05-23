@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/IBM_ADMIN/git/test/lib/sqlitejdbc-v056.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/IBM_ADMIN/git/test/lib/sqlite-jdbc-3.7.15-M1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
