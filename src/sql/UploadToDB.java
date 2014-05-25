@@ -33,6 +33,20 @@ public class UploadToDB {
         conn.close();
     }
     
+    public static void modify_line(String database, String id, String field, String newfield) throws Exception {
+        Class.forName("org.sqlite.JDBC");
+        String manager =  "jdbc:sqlite:" + database + ".db";
+        Connection conn = DriverManager.getConnection(manager);
+        Statement stmt = conn.createStatement();
+        String Modify = "Update " + database + " SET " + field;
+        Modify = Modify + "='" + newfield + "' WHERE id='" + id + "'";
+        stmt.executeUpdate(Modify);
+		
+        conn.setAutoCommit(false);
+        conn.setAutoCommit(true);
+        conn.close();
+    }
+    
     public static void upload_file(String database, String filename) throws Exception{
 
 		try{

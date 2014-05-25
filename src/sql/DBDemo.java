@@ -5,9 +5,12 @@ public class DBDemo {
 
     	
 		String file_name = "people.csv";
-		String database = "test";
+		String database = "user";
 		UploadToDB.upload_file(database, file_name);
-
+    	
+    	DownloadFromDB.download(database, null);
+    	
+    	UploadToDB.modify_line(database, "1", "work", "ESPN");
     	
     	DownloadFromDB.download(database, null);
     }
