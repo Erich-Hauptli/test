@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DownloadFromDB {
-	public static void main(String[] args) throws Exception {
+	public static void download(String[] args) throws Exception {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:user.db");
         Statement stat = null;
         //String query = "SELECT * FROM user WHERE education LIKE 'MSU'";
