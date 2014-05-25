@@ -10,13 +10,15 @@ import files.ReadFile;
 
 public class UploadToDB {
 	
-    public static void upload_line(String[] args) throws Exception { 	
+    public static void upload_line(String database, String[] args) throws Exception {
         Class.forName("org.sqlite.JDBC");
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:user.db");
+        String manager =  "jdbc:sqlite:" + database + ".db";
+        Connection conn = DriverManager.getConnection(manager);
         Statement stmt = conn.createStatement();
-        stmt.executeUpdate("create table if not exists user(id, name, birthday, education, work);");   //Create table
-        PreparedStatement prep = conn.prepareStatement(
-            "insert into user values (?, ?, ?, ?, ?);");
+        String Update = "create table if not exists " + database + "(id, name, birthday, education, work);";
+        stmt.executeUpdate(Update);   //Create table
+        String Prepared = "insert into " + database + " values (?, ?, ?, ?, ?);";
+        PreparedStatement prep = conn.prepareStatement(Prepared);
         
         prep.setString(1, args[0]);
         prep.setString(2, args[1]);
@@ -31,7 +33,8 @@ public class UploadToDB {
         conn.close();
     }
     
-    public static void upload_file(String filename) throws Exception{
+    public static void upload_file(String database, String filename) throws Exception{
+
 		try{
 			ReadFile file = new ReadFile(filename);
 			String[] aryLines = file.OpenFile();
@@ -40,7 +43,7 @@ public class UploadToDB {
 			for(i=0; i<aryLines.length; i++){
 				String line = aryLines[i];
 				String[] split = line.split("\\s*,\\s*");
-				UploadToDB.upload_line(split);
+				UploadToDB.upload_line(database, split);
 			}
 		}
 		catch(IOException e){

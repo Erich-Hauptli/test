@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DownloadFromDB {
-	public static void download(String[] args) throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:user.db");
+	public static void download(String database, String[] args) throws Exception {
+		String Manager = "jdbc:sqlite:" + database + ".db";
+        Connection conn = DriverManager.getConnection(Manager);
         Statement stat = null;
-        //String query = "SELECT * FROM user WHERE education LIKE 'MSU'";
-        String query = "SELECT * FROM user";
-        //String size = "SELECT COUNT(*) AS count FROM user";
+        //String query = "SELECT * FROM " + database + " WHERE education LIKE 'MSU'";
+        String query = "SELECT * FROM " + database;
+        //String size = "SELECT COUNT(*) AS count FROM " + database;
 
         try {
             stat = conn.createStatement();
