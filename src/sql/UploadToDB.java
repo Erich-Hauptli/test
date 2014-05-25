@@ -1,13 +1,16 @@
 package sql;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
+import files.ReadFile;
+
 public class UploadToDB {
 	
-    public static void upload(String[] args) throws Exception { 	
+    public static void upload_line(String[] args) throws Exception { 	
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection("jdbc:sqlite:user.db");
         Statement stmt = conn.createStatement();
@@ -27,4 +30,22 @@ public class UploadToDB {
         conn.setAutoCommit(true);
         conn.close();
     }
+    
+    public static void upload_file(String filename) throws Exception{
+		try{
+			ReadFile file = new ReadFile(filename);
+			String[] aryLines = file.OpenFile();
+			
+			int i;
+			for(i=0; i<aryLines.length; i++){
+				String line = aryLines[i];
+				String[] split = line.split("\\s*,\\s*");
+				UploadToDB.upload_line(split);
+			}
+		}
+		catch(IOException e){
+			System.out.println(e.getMessage());
+		}
+    }
+    
   }
