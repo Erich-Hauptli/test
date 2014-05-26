@@ -1,7 +1,7 @@
 package user;
 
 public class ProfileDemo {
-    public static void profile_main() {
+	public static void main(String[] args) {
 
         // Create User objects
         UserProfile user = new UserProfile();
