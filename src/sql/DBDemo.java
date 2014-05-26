@@ -1,7 +1,7 @@
 package sql;
 
 public class DBDemo {
-    public static void main(String[] args) throws Exception {
+    public static void db_main() throws Exception {
 
     	
 		String file_name = "people.csv";

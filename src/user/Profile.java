@@ -1,5 +1,7 @@
 package user;
 
+import java.util.ArrayList;
+
 public interface Profile {
 	void add_user(String[] user);
 	
@@ -16,4 +18,6 @@ public interface Profile {
     void display_all_users();
     
     void display_user(String field, String search_term);
+    
+    ArrayList<String> collect_users(String field, String search_term);
 }

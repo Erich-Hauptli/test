@@ -3,7 +3,7 @@ package files;
 import java.io.IOException;
 
 public class FileData {
-	public static void main(String[ ] args) throws IOException {
+	public static void file_main() throws IOException {
 		String file_name = "people.csv";
 		
 		try{

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DownloadFromDB {
 	public static void download_all(String database) throws Exception {
@@ -55,5 +56,30 @@ public class DownloadFromDB {
         } finally {
             if (stat != null) { stat.close(); }
         }
+    }
+	
+	public static ArrayList<String> collect_matches(String database, String field, String field_value) throws Exception {
+		String Manager = "jdbc:sqlite:" + database + ".db";
+        Connection conn = DriverManager.getConnection(Manager);
+        Statement stat = null;
+        String query = "SELECT * FROM " + database + " WHERE " + field + " LIKE '" + field_value + "'";
+        //String size = "SELECT COUNT(*) AS count FROM " + database;
+        ArrayList<String> results = new ArrayList<String>();
+        
+        try {
+            stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(query);
+                        
+            while (rs.next()) {
+            	String result = rs.getString("id") + "," + rs.getString("name") + ",";
+            	result = result + rs.getString("birthday") + "," + rs.getString("education") + "," + rs.getString("work");
+            	results.add(result);
+            }
+            return results;
+        } catch (SQLException e ) {
+        } finally {
+            if (stat != null) { stat.close(); }
+        }
+		return results;
     }
   }
