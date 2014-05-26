@@ -8,10 +8,12 @@ public class DBDemo {
 		String database = "user";
 		UploadToDB.upload_file(database, file_name);
     	
-    	DownloadFromDB.download(database, null);
+    	DownloadFromDB.download_all(database);
     	
     	UploadToDB.modify_line(database, "1", "work", "ESPN");
     	
-    	DownloadFromDB.download(database, null);
+    	DownloadFromDB.download_all(database);
+    	
+    	DownloadFromDB.download_matches(database, "education", "MSU");
     }
 }

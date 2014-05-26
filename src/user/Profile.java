@@ -1,12 +1,19 @@
 package user;
 
 public interface Profile {
-    //  wheel revolutions per minute
-    void set_username(String newValue);
+	void add_user(String[] user);
+	
+	void add_users(String file);
+	
+    void modify_username(String id, String name);
 
-    void set_birthday(String newValue);
+    void modify_birthday(String id, String birthday);
 
-    void set_education(String increment);
+    void modify_education(String id, String education);
 
-    void set_work_history(String decrement);
+    void modify_work_history(String id, String work);
+    
+    void display_all_users();
+    
+    void display_user(String field, String search_term);
 }
