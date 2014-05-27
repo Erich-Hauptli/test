@@ -3,6 +3,7 @@ package user;
 import java.util.ArrayList;
 
 import sql.DownloadFromDB;
+import sql.QueryDB;
 import sql.UploadToDB;
 
 
@@ -85,6 +86,17 @@ public class UserProfile implements Profile{
 	    	ArrayList<String> results = new ArrayList<String>();
 	        try {
 	        	results = DownloadFromDB.collect_matches(database, field, search_term);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        return results;
+	    }
+	    
+	    public ArrayList<String> query_collumns() {
+	    	ArrayList<String> results = new ArrayList<String>();
+	        try {
+	        	results = QueryDB.query_headers(database);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -23,8 +23,8 @@ public class DownloadFromDB {
             //int count = rs1.getInt("count");
             
             while (rs.next()) {
-            	System.out.println("id = " + rs.getString("id") + "   " + "name = " + rs.getString("name") );
-                System.out.println("birthday = " + rs.getString("birthday") + "   " + "education = " + rs.getString("education") + "   " + "work = " + rs.getString("work") + "\n");
+            	System.out.println("id = " + rs.getString("id") + "   " + "name = " + rs.getString("name") + " birthday = " + rs.getString("birthday") );
+                System.out.println("education = " + rs.getString("education") + "   " + "degree = " + rs.getString("degree") + "   " + "work = " + rs.getString("work") + "\n");
             }
             //System.out.println(count);
         } catch (SQLException e ) {
@@ -48,8 +48,8 @@ public class DownloadFromDB {
             //int count = rs1.getInt("count");
             
             while (rs.next()) {
-            	System.out.println("id = " + rs.getString("id") + "   " + "name = " + rs.getString("name") );
-                System.out.println("birthday = " + rs.getString("birthday") + "   " + "education = " + rs.getString("education") + "   " + "work = " + rs.getString("work") + "\n");
+            	System.out.println("id = " + rs.getString("id") + "   " + "name = " + rs.getString("name") + " birthday = " + rs.getString("birthday") );
+                System.out.println("education = " + rs.getString("education") + "   " + "degree = " + rs.getString("degree") + "   " + "work = " + rs.getString("work") + "\n");
             }
             //System.out.println(count);
         } catch (SQLException e ) {
@@ -71,8 +71,8 @@ public class DownloadFromDB {
             ResultSet rs = stat.executeQuery(query);
                         
             while (rs.next()) {
-            	String result = rs.getString("id") + "," + rs.getString("name") + ",";
-            	result = result + rs.getString("birthday") + "," + rs.getString("education") + "," + rs.getString("work");
+            	String result = rs.getString("id") + "," + rs.getString("name") + "," + rs.getString("birthday") + ",";
+            	result = result + rs.getString("education") + "," + rs.getString("degree") + "," + rs.getString("work");
             	results.add(result);
             }
         } catch (SQLException e ) {

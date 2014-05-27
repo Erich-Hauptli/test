@@ -20,4 +20,6 @@ public interface Profile {
     void display_user(String field, String search_term);
     
     ArrayList<String> collect_users(String field, String search_term);
+    
+    ArrayList<String> query_collumns();
 }

@@ -11,13 +11,15 @@ import files.ReadFile;
 public class UploadToDB {
 	
     public static void upload_line(String database, String[] args) throws Exception {
+    	String Collumn_Names = "id, name, birthday, education, degree, work";
+    	
         Class.forName("org.sqlite.JDBC");
         String manager =  "jdbc:sqlite:" + database + ".db";
         Connection conn = DriverManager.getConnection(manager);
         Statement stmt = conn.createStatement();
-        String Update = "create table if not exists " + database + "(id, name, birthday, education, work);";
+        String Update = "create table if not exists " + database + "(" + Collumn_Names + ");";
         stmt.executeUpdate(Update);   //Create table
-        String Prepared = "insert into " + database + " values (?, ?, ?, ?, ?);";
+        String Prepared = "insert into " + database + " values (?, ?, ?, ?, ?, ?);";
         PreparedStatement prep = conn.prepareStatement(Prepared);
         
         prep.setString(1, args[0]);
@@ -25,6 +27,7 @@ public class UploadToDB {
         prep.setString(3, args[2]);
         prep.setString(4, args[3]);
         prep.setString(5, args[4]);
+        prep.setString(6, args[5]);
         prep.addBatch();
 		
         conn.setAutoCommit(false);
