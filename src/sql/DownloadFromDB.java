@@ -75,7 +75,6 @@ public class DownloadFromDB {
             	result = result + rs.getString("birthday") + "," + rs.getString("education") + "," + rs.getString("work");
             	results.add(result);
             }
-            return results;
         } catch (SQLException e ) {
         } finally {
             if (stat != null) { stat.close(); }
