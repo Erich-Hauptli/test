@@ -10,11 +10,10 @@ import files.ReadFile;
 
 public class UploadToDB {
 	
-    public static void upload_line(String database, String[] args) throws Exception {
-    	String[] Collumn_Names = {"id", "name", "birthday", "education", "degree", "work", "city"};
+    public static void upload_line(String database, String[] headers, String[] args) throws Exception {
     	String Names = "";
     	String Q = null;
-    	for(String Name : Collumn_Names){
+    	for(String Name : headers){
     		if (Names.equals("")){
     			Names = Name;
     			Q = "?";
@@ -34,7 +33,7 @@ public class UploadToDB {
         String Prepared = "insert into " + database + " values ("+ Q + ");";
         PreparedStatement prep = conn.prepareStatement(Prepared);
         
-        for(int i = 0; i<Collumn_Names.length; i++){
+        for(int i = 0; i<headers.length; i++){
         	prep.setString(i+1, args[i]);
         }
         prep.addBatch();
@@ -59,7 +58,7 @@ public class UploadToDB {
         conn.close();
     }
     
-    public static void upload_file(String database, String filename) throws Exception{
+    public static void upload_file(String database, String[] headers, String filename) throws Exception{
 
 		try{
 			ReadFile file = new ReadFile(filename);
@@ -69,7 +68,7 @@ public class UploadToDB {
 			for(i=0; i<aryLines.length; i++){
 				String line = aryLines[i];
 				String[] split = line.split("\\s*,\\s*");
-				UploadToDB.upload_line(database, split);
+				UploadToDB.upload_line(database, headers, split);
 			}
 		}
 		catch(IOException e){

@@ -8,8 +8,9 @@ public class DBDemo {
     	
 		String file_name = "people.csv";
 		String database = "user";
+		String[] headers = {"id", "name", "birthday", "education", "degree", "work", "city"};
 		
-		UploadToDB.upload_file(database, file_name);
+		UploadToDB.upload_file(database, headers, file_name);
 		
 		ArrayList<String> Collumns = QueryDB.query_headers(database);
 		

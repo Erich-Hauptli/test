@@ -9,10 +9,11 @@ import sql.UploadToDB;
 
 public class UserProfile implements Profile{
 		String database = "user";
+		String[] headers = {"id", "name", "birthday", "education", "degree", "work", "city"};
 
 	    public void add_user(String[] user_info) {
 	        try {
-	        	UploadToDB.upload_line(database, user_info);
+	        	UploadToDB.upload_line(database, headers, user_info);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -21,7 +22,7 @@ public class UserProfile implements Profile{
 		
 	    public void add_users(String file) {
 	        try {
-	        	UploadToDB.upload_file(database, file);
+	        	UploadToDB.upload_file(database, headers, file);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
