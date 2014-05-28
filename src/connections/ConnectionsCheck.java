@@ -35,7 +35,7 @@ public class ConnectionsCheck implements Connections{
 	        	boolean found = false;
 	        	for (String point : Points) {
 	        	    if (point.equals(split[i])) {
-	        	        found = true;
+	        	    	found = true;
 	        	        break;
 	        	    }
 	        	}

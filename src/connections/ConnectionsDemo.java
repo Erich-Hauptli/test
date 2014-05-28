@@ -5,7 +5,7 @@ public class ConnectionsDemo {
 
 		ConnectionsCheck connection = new ConnectionsCheck();
 		
-		String[] fields = {"education", "degree"}; 
+		String[] fields = {"education", "degree", "city"}; 
 		connection.find_same("work", "engineer", fields);
 	
 	}
